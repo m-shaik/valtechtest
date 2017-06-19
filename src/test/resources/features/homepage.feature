@@ -1,9 +1,9 @@
 @test
 Feature: Valtech - Home Page Tests
 
-#Scenario:Latest News Section is displayed
-  #Given I navigate to valtech home page
-  #Then Latest news section is displayed
+Scenario:Latest News Section is displayed
+  Given I navigate to valtech home page
+  Then Latest news section is displayed
 
 Scenario Outline: Verify that page titles are correct
   Given I navigate to valtech home page
