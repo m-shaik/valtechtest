@@ -21,13 +21,13 @@ public class HomePage {
     @FindBy(how = How.XPATH, using = "//*[@id='container']/div[2]/div[3]")
     private WebElement LatestNewsSection;
 
-    @FindBy(how = How.XPATH, using = "//*[@id='navigationMenuWrapper']/div/ul/li[1]/a/span")
+    @FindBy(how = How.XPATH, using = ".//*[@id='navigationMenuWrapper']/descendant::span[text()='About']")
     private WebElement AboutPageLink;
 
-    @FindBy(how = How.XPATH, using = "//*[@id='navigationMenuWrapper']/div/ul/li[2]/a/span")
-    private WebElement WorksPageLink;
+    @FindBy(how = How.XPATH, using = ".//*[@id='navigationMenuWrapper']/descendant::span[text()='Work']")
+    private WebElement WorkPageLink;
 
-    @FindBy(how = How.XPATH, using = "//*[@id='navigationMenuWrapper']/div/ul/li[3]/a/span")
+    @FindBy(how = How.XPATH, using = ".//*[@id='navigationMenuWrapper']/descendant::span[text()='Services']")
     private WebElement ServicesPageLink;
 
     @FindBy(how = How.LINK_TEXT, using = "contactcities li a")
@@ -38,7 +38,11 @@ public class HomePage {
 
         PageFactory.initElements(driver, this);
     }
-
+     public void navigateToHomePage(){
+        driver.get("https://www.valtech.com/");
+         WebElement dynamicElement =
+                 (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOf(AboutPageLink));
+     }
     public boolean isLatestNewsSectionDisplayed() {
         WebElement dynamicElement =
                 (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOf(LatestNewsSection));
@@ -53,26 +57,32 @@ public class HomePage {
     }
 
 
-    public void verifyPageTitle(String link) {
+    public void verifyPageTitle(String link) throws InterruptedException {
         String title = "";
-        if (link == "About"){
+        System.out.println("Link name is " + link);
+        if (link.equalsIgnoreCase("About")) {
             AboutPageLink.click();
-            title =driver.getTitle();
-            System.out.println("Page Title is " + title);
-            Assert.assertEquals(title.toString(), "About");
-
-            if (link == "Works") {
-                WorksPageLink.click();
-                title = driver.getTitle();
-                Assert.assertEquals(title.toString(), "Works");
+            Thread.sleep(5000);
+            WebElement h1 = driver.findElement(By.tagName("h1"));
+            System.out.println("Page Title is " + h1.getText());
+            Assert.assertEquals("H1 title is not as expected " + h1.getText(), h1.getText(), "About");
+        }
+            if (link.equalsIgnoreCase( "Work") ){
+                WorkPageLink.click();
+                Thread.sleep(5000);
+                WebElement h1 = driver.findElement(By.tagName("h1"));
+                System.out.println("Page Title is " + h1.getText());
+                Assert.assertEquals("H1 title is not as expected " + h1.getText(), h1.getText(), "Work");
             }
-                 if (link =="Sercices"){
+                 if (link.equalsIgnoreCase("Services")){
                 ServicesPageLink.click();
-                     title =driver.getTitle();
-                     Assert.assertEquals(title.toString(), "Services");
+                     Thread.sleep(5000);
+                     WebElement h1 = driver.findElement(By.tagName("h1"));
+                     System.out.println("Page Title is " + h1.getText());
+                     Assert.assertEquals("H1 title is not as expected " + h1.getText(), h1.getText(), "Services");
 
                  }
-        }
+
 
     }
 

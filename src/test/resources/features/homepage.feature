@@ -12,11 +12,11 @@ Scenario Outline: Verify that page titles are correct
 Examples:
   |pageLink |
   | About   |
-  | Works   |
+  | Work   |
   | Services |
 
 
-  Scenario: number of contact offices
+Scenario: number of contact offices
     Given I navigate to valtech contact us page
     Then the number of offices are shown
 

@@ -16,7 +16,8 @@ public class HomePageSteps implements En {
     public HomePageSteps(){
 
         Given("^I navigate to valtech home page$", () -> {
-            driver.get("https://www.valtech.com/");
+           // driver.get("https://www.valtech.com/");
+            homePage.navigateToHomePage();
         });
 
         Then("^Latest news section is displayed$", () -> {
@@ -25,7 +26,13 @@ public class HomePageSteps implements En {
 
 
         When("^Click on page link (.*)$", (String link) -> {
-            homePage.verifyPageTitle(link);
+
+            try {
+                homePage.verifyPageTitle(link);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
 
         });
 
