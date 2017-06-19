@@ -8,7 +8,7 @@ Scenario:Latest News Section is displayed
 Scenario Outline: Verify that page titles are correct
   Given I navigate to valtech home page
   When Click on page link <pageLink>
-  Then page title shows correct title
+  Then the page title shows correct title
 Examples:
   |pageLink |
   | About   |

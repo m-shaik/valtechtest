@@ -36,7 +36,7 @@ public class HomePageSteps implements En {
 
         });
 
-        Then("^page title shows correct title$", () -> {
+        Then("^the page title shows correct title$", () -> {
 
         });
 
