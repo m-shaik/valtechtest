@@ -57,33 +57,21 @@ public class HomePage {
     }
 
 
-    public void verifyPageTitle(String link) throws InterruptedException {
-        String title = "";
-        System.out.println("Link name is " + link);
+    public String verifyPageTitle(String link) throws InterruptedException {
+       System.out.println("Link name is " + link);
+       String h1 ;
         if (link.equalsIgnoreCase("About")) {
             AboutPageLink.click();
-            Thread.sleep(5000);
-            WebElement h1 = driver.findElement(By.tagName("h1"));
-            System.out.println("Page Title is " + h1.getText());
-            Assert.assertEquals("H1 title is not as expected " + h1.getText(), h1.getText(), "About");
-        }
+            }
             if (link.equalsIgnoreCase( "Work") ){
                 WorkPageLink.click();
-                Thread.sleep(5000);
-                WebElement h1 = driver.findElement(By.tagName("h1"));
-                System.out.println("Page Title is " + h1.getText());
-                Assert.assertEquals("H1 title is not as expected " + h1.getText(), h1.getText(), "Work");
             }
                  if (link.equalsIgnoreCase("Services")){
                 ServicesPageLink.click();
-                     Thread.sleep(5000);
-                     WebElement h1 = driver.findElement(By.tagName("h1"));
-                     System.out.println("Page Title is " + h1.getText());
-                     Assert.assertEquals("H1 title is not as expected " + h1.getText(), h1.getText(), "Services");
-
-                 }
-
-
+            }
+                 Thread.sleep(5000);
+                 h1 = driver.findElement(By.tagName("h1")).getText();
+                 return h1;
     }
 
     public void displayNumberOfContactOffices(){

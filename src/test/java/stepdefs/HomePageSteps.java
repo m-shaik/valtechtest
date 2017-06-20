@@ -11,6 +11,7 @@ import static common.Driver.driver;
  */
 public class HomePageSteps implements En {
 
+     String title;
     HomePage homePage = new HomePage();
 
     public HomePageSteps(){
@@ -27,8 +28,9 @@ public class HomePageSteps implements En {
 
         When("^Click on page link (.*)$", (String link) -> {
 
+
             try {
-                homePage.verifyPageTitle(link);
+               title =  homePage.verifyPageTitle(link);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -36,8 +38,9 @@ public class HomePageSteps implements En {
 
         });
 
-        Then("^the page title shows correct title$", () -> {
-
+        Then("^the page title shows correct title (.*)$", (String expectedTitle) -> {
+            System.out.println("Page Title is " + title);
+            Assert.assertEquals("H1 title is not as expected " + title, title, expectedTitle);
         });
 
         Given("^I navigate to valtech contact us page$", () -> {
