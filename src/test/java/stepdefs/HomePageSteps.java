@@ -30,7 +30,7 @@ public class HomePageSteps implements En {
 
 
             try {
-               title =  homePage.verifyPageTitle(link);
+               title =  homePage.getH1Title(link);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -39,7 +39,7 @@ public class HomePageSteps implements En {
         });
 
         Then("^the page title shows correct title (.*)$", (String expectedTitle) -> {
-            System.out.println("Page Title is " + title);
+            System.out.println("Page H1 Title is " + title);
             Assert.assertEquals("H1 title is not as expected " + title, title, expectedTitle);
         });
 

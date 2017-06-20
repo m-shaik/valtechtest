@@ -57,7 +57,7 @@ public class HomePage {
     }
 
 
-    public String verifyPageTitle(String link) throws InterruptedException {
+    public String getH1Title(String link) throws InterruptedException {
        System.out.println("Link name is " + link);
        String h1 ;
         if (link.equalsIgnoreCase("About")) {
